@@ -11,18 +11,54 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-const localRates = [
-  { item: 'Base Fare (First 4 Hours)', rate: '₹500' },
-  { item: 'Hourly Extra', rate: '₹100/hr' },
-  { item: 'Night Charge (After 10 PM)', rate: '₹200' },
-  { item: 'Full Day (12 Hours)', rate: '₹1,200' },
-];
+// Icons
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import ExploreIcon from '@mui/icons-material/Explore';
+import LocalParkingIcon from '@mui/icons-material/LocalParking';
+import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 
-const outstationRates = [
-  { item: 'Per Day Driver Charge', rate: '₹1,500' },
-  { item: 'Food & Allowance', rate: '₹500/day' },
-  { item: 'Return Journey Charge', rate: 'Actuals' },
-  { item: 'Minimum Duration', rate: '24 Hours' },
+const tariffCategories = [
+  {
+    title: 'Local Service',
+    icon: <DirectionsCarIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
+    rates: [
+      { item: 'Local (First 4 Hours)', rate: '₹500' },
+      { item: 'Hourly Extra', rate: '₹100/hr' },
+      { item: 'Night Charge (After 10 PM)', rate: '₹100' },
+      { item: 'Full Day (12 Hours)', rate: '₹1,300' },
+    ],
+  },
+  {
+    title: 'Outstation Service',
+    icon: <ExploreIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
+    rates: [
+      { item: 'Outstation Charge', rate: '₹1,500/day' },
+      { item: 'Same Day Return (12 Hours)', rate: '₹1,500' },
+      { item: 'Food & Allowance', rate: '₹300/day' },
+      { item: 'Return Journey Charges', rate: 'Actuals' },
+    ],
+  },
+  {
+    title: 'Cab Service',
+    icon: <LocalTaxiIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
+    rates: [
+      { item: 'Mini / Sedan (5 Hours / 50km)', rate: '₹1,500' },
+      { item: 'Mini / Sedan Min (10km)', rate: '₹300' },
+      { item: 'SUV Cars (5 Hours / 50km)', rate: '₹2,000' },
+      { item: 'SUV Min Charge (10km)', rate: '₹400' },
+      { item: 'Luxury Cars (5 Hours / 50km)', rate: '₹2,500' },
+      { item: 'Luxury Min Charge (10km)', rate: '₹500' },
+    ],
+  },
+  {
+    title: 'Valet Service',
+    icon: <LocalParkingIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
+    rates: [
+      { item: 'Valet Base (First 4 Hours)', rate: '₹600' },
+      { item: 'Hourly Extra', rate: '₹100/hr' },
+      { item: 'Food Allowance', rate: '₹100 (or Food)' },
+    ],
+  },
 ];
 
 export default function Tariff() {
@@ -64,165 +100,114 @@ export default function Tariff() {
         </Box>
 
         <Grid container spacing={4}>
-          {/* Local Rates */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Paper
-              elevation={0}
-              sx={{
-                overflow: 'hidden',
-                backgroundColor: '#141313', // Surface
-                border: '1px solid',
-                borderColor: 'custom.outlineVariant',
-                borderRadius: 2,
-              }}
-            >
-              <Box
+          {tariffCategories.map((category) => (
+            <Grid key={category.title} size={{ xs: 12, md: 6 }}>
+              <Paper
+                elevation={0}
                 sx={{
-                  backgroundColor: 'primary.main',
-                  py: 2.5,
-                  textAlign: 'center',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'hidden',
+                  backgroundColor: '#141313', // Surface
+                  border: '1px solid',
+                  borderColor: 'custom.outlineVariant',
+                  borderRadius: 3,
+                  transition: 'border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    boxShadow: '0 0 30px rgba(250, 204, 21, 0.1)',
+                    transform: 'translateY(-4px)',
+                  },
                 }}
               >
-                <Typography
-                  variant="subtitle2"
+                <Box
                   sx={{
-                    color: 'primary.contrastText',
-                    fontFamily: 'var(--font-inter)',
-                    fontWeight: 700,
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 2.5,
+                    px: 4,
+                    py: 3,
+                    borderBottom: '1px solid',
+                    borderColor: 'custom.outlineVariant',
+                    background: 'linear-gradient(135deg, rgba(20, 19, 19, 1) 0%, rgba(28, 27, 27, 1) 100%)',
                   }}
                 >
-                  Local Service Rates
-                </Typography>
-              </Box>
-              <Box sx={{ p: 4 }}>
-                <Table>
-                  <TableBody>
-                    {localRates.map((row, index) => (
-                      <TableRow
-                        key={row.item}
-                        sx={{
-                          borderBottom: index !== localRates.length - 1 ? '1px solid #262626' : 'none',
-                        }}
-                      >
-                        <TableCell
+                  <Box
+                    sx={{
+                      display: 'inline-flex',
+                      p: 1.5,
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(250, 204, 21, 0.08)',
+                      border: '1px solid rgba(250, 204, 21, 0.2)',
+                    }}
+                  >
+                    {category.icon}
+                  </Box>
+                  <Typography
+                    variant="h5"
+                    component="h3"
+                    sx={{
+                      fontFamily: 'var(--font-playfair-display)',
+                      fontWeight: 600,
+                      letterSpacing: '0.01em',
+                    }}
+                  >
+                    {category.title}
+                  </Typography>
+                </Box>
+                <Box sx={{ p: 4, flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+                  <Table>
+                    <TableBody>
+                      {category.rates.map((row, index) => (
+                        <TableRow
+                          key={row.item}
                           sx={{
-                            borderBottom: 'none',
-                            px: 0,
-                            py: 2.5,
-                            fontFamily: 'var(--font-inter)',
-                            color: 'text.primary',
-                            fontSize: '14px',
-                            fontWeight: 500,
+                            borderBottom: index !== category.rates.length - 1 ? '1px solid #222' : 'none',
                           }}
                         >
-                          {row.item}
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{
-                            borderBottom: 'none',
-                            px: 0,
-                            py: 2.5,
-                            fontFamily: 'var(--font-inter)',
-                            color: 'primary.main',
-                            fontSize: '16px',
-                            fontWeight: 700,
-                          }}
-                        >
-                          {row.rate}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Box>
-            </Paper>
-          </Grid>
-
-          {/* Outstation Rates */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Paper
-              elevation={0}
-              sx={{
-                overflow: 'hidden',
-                backgroundColor: '#141313', // Surface
-                border: '1px solid',
-                borderColor: 'custom.outlineVariant',
-                borderRadius: 2,
-              }}
-            >
-              <Box
-                sx={{
-                  backgroundColor: 'primary.main',
-                  py: 2.5,
-                  textAlign: 'center',
-                }}
-              >
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    color: 'primary.contrastText',
-                    fontFamily: 'var(--font-inter)',
-                    fontWeight: 700,
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Outstation Service Rates
-                </Typography>
-              </Box>
-              <Box sx={{ p: 4 }}>
-                <Table>
-                  <TableBody>
-                    {outstationRates.map((row, index) => (
-                      <TableRow
-                        key={row.item}
-                        sx={{
-                          borderBottom: index !== outstationRates.length - 1 ? '1px solid #262626' : 'none',
-                        }}
-                      >
-                        <TableCell
-                          sx={{
-                            borderBottom: 'none',
-                            px: 0,
-                            py: 2.5,
-                            fontFamily: 'var(--font-inter)',
-                            color: 'text.primary',
-                            fontSize: '14px',
-                            fontWeight: 500,
-                          }}
-                        >
-                          {row.item}
-                        </TableCell>
-                        <TableCell
-                          align="right"
-                          sx={{
-                            borderBottom: 'none',
-                            px: 0,
-                            py: 2.5,
-                            fontFamily: 'var(--font-inter)',
-                            color: 'primary.main',
-                            fontSize: '16px',
-                            fontWeight: 700,
-                          }}
-                        >
-                          {row.rate}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Box>
-            </Paper>
-          </Grid>
+                          <TableCell
+                            sx={{
+                              borderBottom: 'none',
+                              px: 0,
+                              py: 2,
+                              fontFamily: 'var(--font-inter)',
+                              color: 'text.primary',
+                              fontSize: '14px',
+                              fontWeight: 500,
+                            }}
+                          >
+                            {row.item}
+                          </TableCell>
+                          <TableCell
+                            align="right"
+                            sx={{
+                              borderBottom: 'none',
+                              px: 0,
+                              py: 2,
+                              fontFamily: 'var(--font-inter)',
+                              color: 'primary.main',
+                              fontSize: '16px',
+                              fontWeight: 700,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {row.rate}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </Box>
+              </Paper>
+            </Grid>
+          ))}
         </Grid>
 
         <Typography
           variant="body2"
           sx={{
-            mt: 4,
+            mt: 6,
             textAlign: 'center',
             fontFamily: 'var(--font-inter)',
             color: 'text.secondary',

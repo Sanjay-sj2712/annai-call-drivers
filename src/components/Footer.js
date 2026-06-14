@@ -7,9 +7,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import ShareIcon from '@mui/icons-material/Share';
-import LanguageIcon from '@mui/icons-material/Language';
-import ForumIcon from '@mui/icons-material/Forum';
+import PhoneIcon from '@mui/icons-material/Phone';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useTheme } from '@mui/material/styles';
 
 export default function Footer() {
@@ -174,53 +173,59 @@ export default function Footer() {
               sx={{
                 fontFamily: 'var(--font-inter)',
                 color: 'text.secondary',
-                mb: 3,
+                mb: 1.5,
               }}
             >
-              concierge@annai-drivers.com
+              <Link
+                href="mailto:annaicalldriver@gmail.com"
+                sx={{
+                  color: 'text.secondary',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                annaicalldriver@gmail.com
+              </Link>
             </Typography>
-            <Box sx={{ display: 'flex', gap: 1.5 }}>
+            <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
               <IconButton
+                component="a"
+                href="tel:+919444482386"
+                aria-label="Call Annai Call Drivers"
                 sx={{
                   color: 'primary.main',
                   border: '1px solid',
                   borderColor: 'custom.outlineVariant',
-                  transition: 'transform 0.2s ease',
+                  transition: 'transform 0.2s ease, border-color 0.2s ease',
                   '&:hover': {
                     transform: 'scale(1.1)',
+                    borderColor: 'primary.main',
                     backgroundColor: 'rgba(250, 204, 21, 0.08)',
                   },
                 }}
               >
-                <ShareIcon sx={{ fontSize: 18 }} />
+                <PhoneIcon sx={{ fontSize: 20 }} />
               </IconButton>
               <IconButton
+                component="a"
+                href="https://wa.me/919841133000"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with Annai Call Drivers on WhatsApp"
                 sx={{
-                  color: 'primary.main',
+                  color: '#25D366', // Official WhatsApp green
                   border: '1px solid',
                   borderColor: 'custom.outlineVariant',
-                  transition: 'transform 0.2s ease',
+                  transition: 'transform 0.2s ease, border-color 0.2s ease',
                   '&:hover': {
                     transform: 'scale(1.1)',
-                    backgroundColor: 'rgba(250, 204, 21, 0.08)',
+                    borderColor: '#25D366',
+                    backgroundColor: 'rgba(37, 211, 102, 0.08)',
                   },
                 }}
               >
-                <LanguageIcon sx={{ fontSize: 18 }} />
-              </IconButton>
-              <IconButton
-                sx={{
-                  color: 'primary.main',
-                  border: '1px solid',
-                  borderColor: 'custom.outlineVariant',
-                  transition: 'transform 0.2s ease',
-                  '&:hover': {
-                    transform: 'scale(1.1)',
-                    backgroundColor: 'rgba(250, 204, 21, 0.08)',
-                  },
-                }}
-              >
-                <ForumIcon sx={{ fontSize: 18 }} />
+                <WhatsAppIcon sx={{ fontSize: 20 }} />
               </IconButton>
             </Box>
           </Grid>

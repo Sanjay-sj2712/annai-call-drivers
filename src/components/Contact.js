@@ -59,7 +59,7 @@ export default function Contact() {
             variant="contained"
             color="primary"
             component="a"
-            href="tel:+919876543210" // Example placeholder phone
+            href="tel:+919444482386"
             startIcon={<PhoneIcon />}
             className="yellow-glow"
             sx={{
@@ -77,7 +77,7 @@ export default function Contact() {
             variant="outlined"
             color="primary"
             component="a"
-            href="https://wa.me/919876543210" // Example placeholder whatsapp
+            href="https://wa.me/919841133000"
             target="_blank"
             rel="noopener noreferrer"
             startIcon={<WhatsAppIcon />}
