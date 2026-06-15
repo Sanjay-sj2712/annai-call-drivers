@@ -17,7 +17,10 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://annaicalldrivers.com';
+
 export const metadata = {
+  metadataBase: new URL(baseUrl),
   title: "ANNAI CALL DRIVERS | Pinnacle of Professional Driving",
   description: "Trusted by film productions, luxury hotels, and elite events, Annai Call Drivers delivers bespoke driving solutions with precision, discretion, and professionalism where reputation matters most.",
   keywords: [
@@ -46,11 +49,77 @@ export const metadata = {
     "Car drivers",
     "Cab drivers"
   ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "ANNAI CALL DRIVERS | Pinnacle of Professional Driving",
+    description: "Trusted by film productions, luxury hotels, and elite events, Annai Call Drivers delivers bespoke driving solutions with precision, discretion, and professionalism where reputation matters most.",
+    url: baseUrl,
+    siteName: "Annai Call Drivers",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Annai Call Drivers - Pinnacle of Professional Driving",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ANNAI CALL DRIVERS | Pinnacle of Professional Driving",
+    description: "Trusted by film productions, luxury hotels, and elite events, Annai Call Drivers delivers bespoke driving solutions with precision, discretion, and professionalism where reputation matters most.",
+    images: ["/banner.png"],
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+  },
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ANNAI CALL DRIVERS",
+    "image": `${baseUrl}/banner.png`,
+    "@id": `${baseUrl}/#website`,
+    "url": baseUrl,
+    "telephone": "+919444482386",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chennai",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    },
+    "description": "Trusted by film productions, luxury hotels, and elite events, Annai Call Drivers delivers bespoke driving solutions with precision, discretion, and professionalism in Chennai.",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} ${montserrat.variable} ${playfairDisplay.variable}`}>
         <ThemeRegistry>
           {children}
