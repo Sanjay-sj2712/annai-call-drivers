@@ -16,6 +16,7 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ExploreIcon from '@mui/icons-material/Explore';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 const tariffCategories = [
   {
@@ -23,7 +24,7 @@ const tariffCategories = [
     icon: <DirectionsCarIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
     rates: [
       { item: 'Local (First 4 Hours)', rate: '₹500' },
-      { item: 'Hourly Extra', rate: '₹100/hr' },
+      { item: 'Additional', rate: '₹100/hr' },
       { item: 'Night Charge (After 10 PM)', rate: '₹100' },
       { item: 'Full Day (12 Hours)', rate: '₹1,300' },
     ],
@@ -34,6 +35,7 @@ const tariffCategories = [
     rates: [
       { item: 'Outstation Charge', rate: '₹1,500/day' },
       { item: 'Same Day Return (12 Hours)', rate: '₹1,500' },
+      { item: 'Additional', rate: '₹100/hr' },
       { item: 'Food & Allowance', rate: '₹300/day' },
       { item: 'Return Journey Charges', rate: 'Actuals' },
     ],
@@ -55,8 +57,18 @@ const tariffCategories = [
     icon: <LocalParkingIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
     rates: [
       { item: 'Valet Base (First 4 Hours)', rate: '₹600' },
-      { item: 'Hourly Extra', rate: '₹100/hr' },
+      { item: 'Additional', rate: '₹100/hr' },
       { item: 'Food Allowance', rate: '₹100 (or Food)' },
+    ],
+  },
+  {
+    title: 'Packers & Movers',
+    icon: <LocalShippingIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
+    rates: [
+      { item: 'Minimum Charge (Within City)', rate: '₹3,000' },
+      { item: 'Loading Services', rate: '' },
+      { item: 'Unloading Services', rate: '' },
+      { item: 'Safe Packaging & Transport', rate: '' },
     ],
   },
 ];

@@ -16,6 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MapIcon from '@mui/icons-material/Map';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useTheme } from '@mui/material/styles';
 
@@ -44,6 +45,18 @@ const driverCategories = [
     ],
     link: '#tariff',
   },
+  {
+    title: 'Packers & Movers',
+    icon: <LocalShippingIcon sx={{ fontSize: 48, color: 'primary.main' }} />,
+    image: '/packers_movers.png',
+    description: 'Hassle-free packing and relocation services. From loading to safe unloading, we handle all your moving logistics with utmost care.',
+    bullets: [
+      'Charges: Min ₹3,000',
+      'Loading & Unloading services',
+      'Secure Packaging & Transit',
+    ],
+    link: '#tariff',
+  },
 ];
 
 export default function Drivers() {
@@ -61,7 +74,7 @@ export default function Drivers() {
       <Container maxWidth="lg" sx={{ px: { xs: 3, md: 8 } }}>
         <Grid container spacing={4}>
           {driverCategories.map((cat, idx) => (
-            <Grid key={cat.title} size={{ xs: 12, md: 6 }}>
+            <Grid key={cat.title} size={{ xs: 12, md: 4 }}>
               <Card
                 sx={{
                   height: '100%',
