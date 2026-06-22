@@ -24,7 +24,7 @@ const tariffCategories = [
     icon: <DirectionsCarIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
     rates: [
       { item: 'Local (First 4 Hours)', rate: '₹500' },
-      { item: 'Additional', rate: '₹100/hr' },
+      { item: 'Additional Per Hour', rate: '₹100/hr' },
       { item: 'Night Charge (After 10 PM)', rate: '₹100' },
       { item: 'Full Day (12 Hours)', rate: '₹1,300' },
     ],
@@ -35,7 +35,7 @@ const tariffCategories = [
     rates: [
       { item: 'Outstation Charge', rate: '₹1,500/day' },
       { item: 'Same Day Return (12 Hours)', rate: '₹1,500' },
-      { item: 'Additional', rate: '₹100/hr' },
+      { item: 'Additional Per Hour', rate: '₹100/hr' },
       { item: 'Food & Allowance', rate: '₹300/day' },
       { item: 'Return Journey Charges', rate: 'Actuals' },
     ],
@@ -57,7 +57,7 @@ const tariffCategories = [
     icon: <LocalParkingIcon sx={{ fontSize: 28, color: 'primary.main' }} />,
     rates: [
       { item: 'Valet Base (First 4 Hours)', rate: '₹600' },
-      { item: 'Additional', rate: '₹100/hr' },
+      { item: 'Additional Per Hour', rate: '₹100/hr' },
       { item: 'Food Allowance', rate: '₹100 (or Food)' },
     ],
   },
