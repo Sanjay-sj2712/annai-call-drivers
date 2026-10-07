@@ -21,8 +21,8 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://annaicalldrivers.co
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
-  title: "ANNAI CALL DRIVERS | Pinnacle of Professional Driving",
-  description: "Trusted by film productions, luxury hotels, and elite events, Annai Call Drivers delivers bespoke driving solutions with precision, discretion, and professionalism where reputation matters most.",
+  title: "ANNAI CALL DRIVERS — Website Suspended | Payment Dispute Notice",
+  description: "This website is currently suspended due to an unresolved payment dispute related to the development of this website.",
   keywords: [
     "annai call drivers",
     "call drivers chennai",
